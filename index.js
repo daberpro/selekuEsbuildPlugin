@@ -9,8 +9,6 @@ let selekuPlugin = {
 
     build.onResolve({filter: /^lib/igm},async (args)=>{
 
-     console.log(path.join(__dirname,args.path))
-
       return {
         path: path.join(__dirname,args.path,"")
       }
@@ -26,7 +24,7 @@ let selekuPlugin = {
       try {
         let { JS } = new SelekuCompiler(path.basename(args.path).replace(/\.seleku/igm,"")).compile(source, { filename })
         let contents = JS;
-        console.log(JS)
+        
         return { contents }
       } catch (e) {
         return { errors: [(e)=>{}] }
